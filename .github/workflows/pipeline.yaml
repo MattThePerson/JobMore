@@ -1,0 +1,49 @@
+name: Lint, Build & Test
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  # job: Backend lint & test
+  lint_test_backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+      - name: Install
+        run: npm ci
+      - name: Lint & Tsc
+        run: npm run check:back
+      - name: Test
+        run: npm test
+  # job: Frontend lint & test
+  build_test_frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+      - name: Install
+        run: npm run install:frontend
+      - name: Lint & Tsc
+        run: npm run check:front
+      - name: Test
+        run: npm --prefix frontend test
+  # job: e2e_tests
+  e2e_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+      - name: Install
+        run: npm run install:all
+      - name: Build frontend
+        run: npm run build:frontend
+      - name: Build backend
+        run: npm run build
