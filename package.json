@@ -15,9 +15,10 @@
     "format:check": "prettier --check \"{src,shared,frontend}/**/*.{ts,tsx}\"",
     "tsc": "tsc --noEmit",
     "check:frontend": "npm --prefix frontend run check",
-    "check": "concurrently --names lint,format,tsc,fe \"npm:lint\" \"npm:format\" \"npm:tsc\" \"npm:check:frontend\"",
-    "check:nofe": "concurrently --names lint,format,tsc \"npm:lint\" \"npm:format\" \"npm:tsc\"",
+    "check": "concurrently --names lint,format,tsc,fe \"npm:lint\" \"npm:format:check\" \"npm:tsc\" \"npm:check:frontend\"",
+    "check:nofe": "concurrently --names lint,format,tsc \"npm:lint\" \"npm:format:check\" \"npm:tsc\"",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky",
     "boop": "echo \"BOOP\""
   },
   "dependencies": {
@@ -31,6 +32,7 @@
     "eslint": "^10.13.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^17.13.0",
+    "husky": "^9.1.7",
     "prettier": "^3.9.10",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.71.2"
