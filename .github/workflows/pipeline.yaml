@@ -20,7 +20,7 @@ jobs:
       - name: Test
         run: npm test
   # job: Frontend lint & test
-  build_test_frontend:
+  lint_test_frontend:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -47,3 +47,12 @@ jobs:
         run: npm run build:frontend
       - name: Build backend
         run: npm run build
+  # job: Deploy to Render
+  deploy_to_render:
+    needs: [lint_test_backend, lint_test_frontend, e2e_tests]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Deploy Hook
+        if: ${{ !contains(join(github.event.commits.*.message, ' | '), '#nodeploy') }}
+        run: |
+          curl --fail -sS "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
