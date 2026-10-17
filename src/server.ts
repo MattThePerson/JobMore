@@ -3,8 +3,11 @@ import config from "./util/config.ts";
 
 const app = express();
 
-app.get("/hello-there", (_req, res) => {
-  res.json({ message: "General Kenobi!" });
+app.use(express.static(config.frontendPath));
+
+app.get("/health-check", (_req, res) => {
+  // TODO: add operational checks, eg. make backend request
+  res.json({ message: "I'm healthy, bro" });
 });
 
 app.listen(config.port, () => {

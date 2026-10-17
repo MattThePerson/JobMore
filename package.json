@@ -21,6 +21,7 @@
     "install:all": "npm ci && npm run install:frontend",
     "build:frontend": "npm --prefix frontend run build",
     "build:all": "npm run build && npm run build:frontend",
+    "setup": "npm run install:all && npm run build:all",
     "test": "echo \"Testing not yet setup\"",
     "prepare": "husky",
     "boop": "echo \"BOOP\""
