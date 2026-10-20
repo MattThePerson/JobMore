@@ -4,8 +4,8 @@
 
 - [x] [setup:] get eslint, npm, workflows and deploy setup
 - [x] [backend:] add mock in-memory data and simple GET
+- [x] [tests:] add few simple tests for apps API
 - [ ] [backend:] add CRUD operations on data
-- [ ] [tests:] add few simple tests for apis
 - [ ] [frontend:] figure out layout and add simple rendering of applications
 - [ ] [frontend:] add login
 - [ ] [tests:] add some simple frontend tests

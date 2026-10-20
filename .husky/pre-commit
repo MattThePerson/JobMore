@@ -1,1 +1,4 @@
-npm run check
+npx concurrently --names check,btest,ftest \
+"npm run check" \
+"npm test" \
+"npm --prefix frontend test" \
