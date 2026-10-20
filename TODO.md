@@ -3,7 +3,7 @@
 ## current
 
 - [x] [setup:] get eslint, npm, workflows and deploy setup
-- [ ] [backend:] add mock in-memory data and simple GET
+- [x] [backend:] add mock in-memory data and simple GET
 - [ ] [backend:] add CRUD operations on data
 - [ ] [tests:] add few simple tests for apis
 - [ ] [frontend:] figure out layout and add simple rendering of applications
