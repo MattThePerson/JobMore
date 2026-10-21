@@ -68,3 +68,19 @@ jobs:
         if: ${{ !contains(join(github.event.commits.*.message, ' | '), '#nodeploy') }}
         run: |
           curl --fail -sS "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
+  # job: bump version (patch)
+  tag_release:
+    needs: [lint_test_backend, lint_test_frontend, e2e_tests]
+    if: ${{ !contains(join(github.event.commits.*.message, ' | '), '#notag') }}
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: "0"
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.75.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
