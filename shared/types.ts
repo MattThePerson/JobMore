@@ -29,8 +29,8 @@ export const ApplicationStatus = z.enum([
   "interested",
   "applied",
   "interview",
-  "pending",
   "offered",
+  "rejected",
   "accepted",
   "declined",
 ]);
@@ -41,16 +41,17 @@ export const NewApplication = z.object({
   status: ApplicationStatus,
   company: Company.shape.name,
   position: z.string(),
-  dateAdded: z.iso.date(),
   dateApplied: z.iso.date().optional(),
   description: z.string().optional(),
+  url: z.string().optional(),
 });
 
 export type NewApplication = z.infer<typeof NewApplication>;
 
 export const Application = z.object({
-  ...NewApplication.shape,
   id: z.string(),
+  dateAdded: z.iso.date(),
+  ...NewApplication.shape,
 });
 
 export type Application = z.infer<typeof Application>;

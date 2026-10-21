@@ -1,9 +1,18 @@
+import { ServerError } from "../../shared/types.ts";
 import type { Request, Response, NextFunction } from "express";
 import { z } from "zod";
 
-export const errorMiddleware = (err: unknown, _req: Request, res: Response, next: NextFunction) => {
+export const errorMiddleware = (
+  err: Error,
+  _req: Request,
+  res: Response<ServerError>,
+  next: NextFunction,
+) => {
   if (err instanceof z.ZodError) {
-    res.status(401).json({ error: err.issues });
+    console.log("detected: ZodError");
+    res.status(400).json({
+      error: z.prettifyError(err),
+    });
   } else {
     next(err);
   }

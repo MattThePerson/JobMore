@@ -5,17 +5,14 @@
 - [x] [setup:] get eslint, npm, workflows and deploy setup
 - [x] [backend:] add mock in-memory data and simple GET
 - [x] [tests:] add few simple tests for apps API
-- [ ] [backend:] add CRUD operations on data
-- [ ] [frontend:] figure out layout and add simple rendering of applications
-- [ ] [frontend:] add login
-- [ ] [tests:] add some simple frontend tests
+- [x] [workflow:] tagging job in workflow
+- [x] [backend:] add apps POST, tests
+- [ ] [frontend:] add listing & adding of applications
+- [ ] [frontend:] add user's and authentication
 - [ ] [tests:] add some simple e2e tests
-- [ ] [app:] add authentication via jwt
 - [ ] [backend:] scaffold full data
-- [ ] [tests:] add full testing for api
 - [ ] [frontend:] add full dashboard page functionality
 - [ ] [frontend:] add full kanban page functionality
-- [ ] [tests:] add more tests to frontend
 - [ ] [tests:] add (more) comprehensive e2e tests
 
 ## backlog
@@ -29,7 +26,6 @@
 ## misc
 
 - [ ] [workflow:] add periodic health check workflow
-- [ ] [workflow:] tagging job in workflow
-- [ ] [app:] returning of version from api
+- [ ] [app:] returning of version from API
 
-.
+#

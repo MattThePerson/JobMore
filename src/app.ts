@@ -5,6 +5,7 @@ import { errorMiddleware } from "./util/middleware.ts";
 
 const app = express();
 
+app.use(express.json());
 app.use(express.static(config.frontendPath));
 
 app.get("/health-check", (_req, res) => {

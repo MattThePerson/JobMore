@@ -19,6 +19,7 @@ const getById = async (id: string): Promise<Application | undefined> => {
 const addNew = async (app: NewApplication): Promise<Application> => {
   const addedApp: Application = {
     id: uuid(),
+    dateAdded: new Date().toISOString().slice(0, 10),
     ...app,
   };
   D = D.concat(addedApp);
