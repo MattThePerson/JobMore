@@ -9,7 +9,6 @@ export const errorMiddleware = (
   next: NextFunction,
 ) => {
   if (err instanceof z.ZodError) {
-    console.log("detected: ZodError");
     res.status(400).json({
       error: z.prettifyError(err),
     });
