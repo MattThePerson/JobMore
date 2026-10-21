@@ -1,6 +1,6 @@
 import express from "express";
 import config from "./util/config.ts";
-import applicationRouter from "./routers/applicationRouter.ts";
+import jobApplicationRouter from "./routers/jobApplicationRouter.ts";
 import { errorMiddleware } from "./util/middleware.ts";
 
 const app = express();
@@ -13,7 +13,7 @@ app.get("/health-check", (_req, res) => {
   res.json({ message: "I'm healthy, bro" });
 });
 
-app.use("/api/applications", applicationRouter);
+app.use("/api/job-applications", jobApplicationRouter);
 
 app.use(errorMiddleware);
 

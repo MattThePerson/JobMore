@@ -1,7 +1,12 @@
 /* index.css */
 
+* {
+  color: #fed;
+}
+
 body {
-  background: brown;
+  background: #3d2b1f;
+  margin: 0;
 }
 
 /* EOF */

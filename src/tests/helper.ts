@@ -1,6 +1,6 @@
-import { Application, type NonEmptyArray } from "../../shared/types.ts";
+import { JobApplication, type NonEmptyArray } from "../../shared/types.ts";
 
-const mockApps: NonEmptyArray<Application> = [
+const mockApps: NonEmptyArray<JobApplication> = [
   {
     id: "9013",
     company: "Apple",

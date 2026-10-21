@@ -6,7 +6,11 @@ interface Props {}
 /* TemplateName */
 // eslint-disable-next-line no-empty-pattern
 const TemplateName = ({}: Props) => {
-  return <S.Base data-testid="TemplateName">TemplateName Component</S.Base>;
+  return (
+    <S.Base data-testid="TemplateName">
+      <h2>TemplateName Component</h2>
+    </S.Base>
+  );
 };
 
 export default TemplateName;

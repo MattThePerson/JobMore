@@ -1,29 +1,29 @@
-import type { Application, NewApplication } from "../../shared/types.ts";
-import dataImport from "../mockData/applicationData.ts";
+import type { JobApplication, NewJobApplication } from "../../shared/types.ts";
+import dataImport from "../../mockData/applicationData.ts";
 import { v4 as uuid } from "uuid";
 
 let D = dataImport;
 
 // eslint-disable-next-line @typescript-eslint/require-await
-const getAll = async (): Promise<Application[]> => {
+const getAll = async (): Promise<JobApplication[]> => {
   return D;
 };
 
 // eslint-disable-next-line @typescript-eslint/require-await
-const getById = async (id: string): Promise<Application | undefined> => {
+const getById = async (id: string): Promise<JobApplication | undefined> => {
   const application = D.find((app) => app.id === id);
   return application;
 };
 
 // eslint-disable-next-line @typescript-eslint/require-await
-const addNew = async (app: NewApplication): Promise<Application> => {
-  const addedApp: Application = {
+const addNew = async (app: NewJobApplication): Promise<JobApplication> => {
+  const added: JobApplication = {
     id: uuid(),
     dateAdded: new Date().toISOString().slice(0, 10),
     ...app,
   };
-  D = D.concat(addedApp);
-  return addedApp;
+  D = D.concat(added);
+  return added;
 };
 
 // eslint-disable-next-line @typescript-eslint/require-await
@@ -47,7 +47,7 @@ const _deleteAll = async () => {
 };
 
 // eslint-disable-next-line @typescript-eslint/require-await
-const _addMany = async (apps: Application[]) => {
+const _addMany = async (apps: JobApplication[]) => {
   for (const app of apps) {
     D = D.concat(app);
   }

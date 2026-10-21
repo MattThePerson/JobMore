@@ -22,10 +22,10 @@ export const Company = z.object({
 export type Company = z.infer<typeof Company>;
 
 // ===============================================
-// Application
+// JobApplication
 // ===============================================
 
-export const ApplicationStatus = z.enum([
+export const JobApplicationStatus = z.enum([
   "interested",
   "applied",
   "interview",
@@ -35,10 +35,10 @@ export const ApplicationStatus = z.enum([
   "declined",
 ]);
 
-export type ApplicationStatus = z.infer<typeof ApplicationStatus>;
+export type JobApplicationStatus = z.infer<typeof JobApplicationStatus>;
 
-export const NewApplication = z.object({
-  status: ApplicationStatus,
+export const NewJobApplication = z.object({
+  status: JobApplicationStatus,
   company: Company.shape.name,
   position: z.string(),
   dateApplied: z.iso.date().optional(),
@@ -46,15 +46,15 @@ export const NewApplication = z.object({
   url: z.string().optional(),
 });
 
-export type NewApplication = z.infer<typeof NewApplication>;
+export type NewJobApplication = z.infer<typeof NewJobApplication>;
 
-export const Application = z.object({
+export const JobApplication = z.object({
   id: z.string(),
   dateAdded: z.iso.date(),
-  ...NewApplication.shape,
+  ...NewJobApplication.shape,
 });
 
-export type Application = z.infer<typeof Application>;
+export type JobApplication = z.infer<typeof JobApplication>;
 
 // ===============================================
 // Utility Types

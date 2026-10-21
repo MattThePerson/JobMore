@@ -1,15 +1,15 @@
-import { Application, NewApplication, ServerError } from "../../shared/types.ts";
+import { JobApplication, NewJobApplication, ServerError } from "../../shared/types.ts";
 import { test, describe, beforeEach } from "node:test";
 import assert from "assert";
 import supertest from "supertest";
-import appService from "../services/applicationService.ts";
+import appService from "../services/jobApplicationService.ts";
 import helper from "./helper.ts";
 import app from "../app.ts";
 
 const api = supertest(app);
-const BASE_URL = "/api/applications";
+const BASE_URL = "/api/job-applications";
 
-void describe("Applications API", () => {
+void describe("Job Applications API", () => {
   beforeEach(async () => {
     await appService._deleteAll();
     await appService._addMany(helper.mockApps);
@@ -20,7 +20,7 @@ void describe("Applications API", () => {
       .get(BASE_URL)
       .expect(200)
       .expect("Content-Type", /application\/json/);
-    const data = Application.array().parse(res.body);
+    const data = JobApplication.array().parse(res.body);
     assert(data.length === helper.mockApps.length);
   });
 
@@ -30,7 +30,7 @@ void describe("Applications API", () => {
       .get(`${BASE_URL}/${id}`)
       .expect(200)
       .expect("Content-Type", /application\/json/);
-    const data = Application.parse(res.body);
+    const data = JobApplication.parse(res.body);
     assert.deepEqual(data, helper.mockApps[0]);
   });
 
@@ -45,7 +45,7 @@ void describe("Applications API", () => {
   });
 
   void test("POST: valid object", async () => {
-    const newApp: NewApplication = {
+    const newApp: NewJobApplication = {
       company: "Rovio",
       position: "CFO",
       status: "applied",
@@ -55,7 +55,7 @@ void describe("Applications API", () => {
       .send(newApp)
       .expect(201)
       .expect("Content-Type", /application\/json/);
-    const body = Application.parse(res.body);
+    const body = JobApplication.parse(res.body);
     assert.deepEqual(body, { ...newApp, id: body.id, dateAdded: body.dateAdded });
   });
 
