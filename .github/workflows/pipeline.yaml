@@ -27,8 +27,10 @@ jobs:
       - uses: actions/setup-node@v7
         with:
           node-version: "24"
-      - name: Install
+      - name: Install (frontend)
         run: npm run install:frontend
+      - name: Install (backend) # needed for shared/ and zod
+        run: npm ci
       - name: Lint & Tsc
         run: npm run check:front
       - name: Test
